@@ -1,14 +1,8 @@
 package ru.kpfu.itis;
 
 import org.hibernate.Session;
-import ru.kpfu.itis.domain.Address;
-import ru.kpfu.itis.domain.Customer;
-import ru.kpfu.itis.domain.Good;
-import ru.kpfu.itis.domain.Order;
-import ru.kpfu.itis.service.AddressService;
-import ru.kpfu.itis.service.CustomerService;
-import ru.kpfu.itis.service.GoodService;
-import ru.kpfu.itis.service.OrderService;
+import ru.kpfu.itis.domain.*;
+import ru.kpfu.itis.service.*;
 import ru.kpfu.itis.util.HibernateUtil;
 
 import java.util.Date;
@@ -24,12 +18,14 @@ public class TestHibernate {
     public static final OrderService orderService = new OrderService();
     public static final CustomerService customerService = new CustomerService();
     public static final AddressService addressService = new AddressService();
+    public static final PersonSimpleService personSimpleService = new PersonSimpleService();
+    public static final NoteService noteService = new NoteService();
 
     public static void main(String[] args) {
         try {
             testConnection();
-            testInsert();
-            testSelect();
+         //   testInsert();
+         //   testSelect();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -52,18 +48,23 @@ public class TestHibernate {
     }
 
     public static void testInsert() {
-        Address address = new Address("Казань", "Университетская", "12", "5");
-        addressService.addAddress(address);
+//        Address address = new Address("Казань", "Университетская", "12", "5");
+//        addressService.addAddress(address);
+//
+//        Customer customer = new Customer("Kamil", "kamil23@mail.ru", address);
+//        customerService.addCustomer(customer);
+//
+//        goodService.addGood(new Good("автомобиль", 500L));
+//        goodService.addGood(new Good("барби", 200L));
+//        goodService.addGood(new Good("LEGO", 1500L));
+//
+//        Order order = new Order("Новогодние игрушки", new Date(), customer, goodService.getAllGoods());
+//        orderService.addOrder(order);
 
-        Customer customer = new Customer("Kamil", "kamil23@mail.ru", address);
-        customerService.addCustomer(customer);
+        PersonSimple newPersonSimple = new PersonSimple("Petr","Vasey");
+        newPersonSimple.setAddress("Kazan");
+        newPersonSimple.setDiagnos("SlowPock");
 
-        goodService.addGood(new Good("автомобиль", 500L));
-        goodService.addGood(new Good("барби", 200L));
-        goodService.addGood(new Good("LEGO", 1500L));
-
-        Order order = new Order("Новогодние игрушки", new Date(), customer, goodService.getAllGoods());
-        orderService.addOrder(order);
     }
 
     public static void testSelect() {

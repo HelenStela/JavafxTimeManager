@@ -35,7 +35,6 @@
         <mapping class="ru.kpfu.itis.domain.Customer"/>
         <mapping class="ru.kpfu.itis.domain.Good"/>
         <mapping class="ru.kpfu.itis.domain.Order"/>
-        <mapping class="ru.kpfu.itis.domain.Note"/>
-        <mapping class="ru.kpfu.itis.domain.PersonSimple"/>
+
     </session-factory>
 </hibernate-configuration>

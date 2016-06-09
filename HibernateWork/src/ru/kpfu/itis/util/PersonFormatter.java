@@ -32,6 +32,9 @@ public class PersonFormatter {
         personSimple.setAddress(person.getAddress());
         personSimple.setSeansNumber(person.getSeansNumber());
         personSimple.setNoteList(person.getNotes());
+        personSimple.setBirthday(person.getBirthday());
+        personSimple.setBalance(person.getBalance());
+
         return personSimple;
     }
         }

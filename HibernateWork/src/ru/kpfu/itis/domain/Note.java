@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Olga on 09.06.2016.
  */
 @Entity
-@Table
+@Table (name = "Note")
 public class Note {
 
     @Id                    // т.е. данное поле является id (уникальным)
@@ -15,12 +15,53 @@ public class Note {
     private Long id;
 
     @Column
-    private String theme;
+    private String name;
 
     @Column(nullable = false)
    private String text;
 
-    @ManyToOne
+    @ManyToOne                                  // определяет отношение многие к одному
+            (cascade = {CascadeType.REFRESH},
+                    fetch = FetchType.LAZY)    // подгрузка объектов списка сразу
     private PersonSimple personSimple;
 
+    public Note() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public PersonSimple getPersonSimple() {
+        return personSimple;
+    }
+
+    public void setPersonSimple(PersonSimple personSimple) {
+        this.personSimple = personSimple;
+    }
+
+    public Note(String name, String text) {
+        this.name = name;
+        this.text = text;
+    }
 }
