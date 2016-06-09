@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Настройки подключения к БД -->
+        <property name="connection.driver_class">org.h2.Driver</property>
+        <property name="connection.url">jdbc:h2:c:/tmp/DZ_hibernate</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password"></property>
+
+        <!-- SQL диалект -->
+        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+
+        <!-- Максимальное число соединений в пуле -->
+        <property name="connection.pool_size">10</property>
+
+        <!-- Отключение автокоммитов -->
+        <property name="hibernate.connection.autocommit">false</property>
+
+        <!-- Включить автоматическое управление контекстом сессии -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Настройка hibernate на автоматическое обновление структуры БД -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Вывод в консоль SQL-запросов -->
+        <property name="show_sql">true</property>
+
+        <!-- Подключение объектов сущностей -->
+        <mapping package="ru.kpfu.itis.domain"/>
+        <mapping class="ru.kpfu.itis.domain.Address"/>
+        <mapping class="ru.kpfu.itis.domain.Customer"/>
+        <mapping class="ru.kpfu.itis.domain.Good"/>
+        <mapping class="ru.kpfu.itis.domain.Order"/>
+
+    </session-factory>
+</hibernate-configuration>
